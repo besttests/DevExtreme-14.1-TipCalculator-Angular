@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>da5d1a3c-8e0a-4492-b4b5-1e6dd2476390</ProjectGuid>
+    <AutoAssignPort>True</AutoAssignPort>
+    <RunInSimulator>True</RunInSimulator>
+    <ApplicationPage>index.html</ApplicationPage>
+    <RootNamespace>PhoneJS_TipCalculator_Angular</RootNamespace>
+    <Name>PhoneJS-TipCalculator-Angular</Name>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <OutputPath>bin\Release\</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="css\" />
+    <Folder Include="js\" />
+    <Folder Include="layouts\" />
+    <Folder Include="layouts\Empty\" />
+    <Folder Include="lib\" />
+    <Folder Include="lib\angular\" />
+    <Folder Include="partials\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\app.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\dx.android.holo-dark.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\dx.common.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\dx.ios.default.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\dx.ios7.default.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\dx.light.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\dx.spa.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\dx.tizen.black.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="css\dx.win8.black.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="index.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\app.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="js\controllers.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="layouts\Empty\EmptyLayout.css">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="layouts\Empty\EmptyLayout.html">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="layouts\Empty\EmptyLayout.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="lib\angular\angular-route.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="lib\angular\angular-sanitize.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="lib\angular\angular.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="lib\dx.phonejs.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="lib\globalize.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="lib\jquery-1.11.1.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="lib\jquery-2.1.1.min.js">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="partials\home.html">
+      <SubType>Content</SubType>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
+  <Target Name="Build">
+    <!--
+    <Message Text="'$(MSBuildToolsPath)'"></Message>
+    -->
+    <Message Text="Build JSProject '$(MSBuildProjectFile)':" Importance="high">
+    </Message>
+    <Message Text="Copying refenecses to output dir..." Importance="high" />
+    <MSBuild Targets="Build" Projects="@(ProjectReference)" Properties="OutputPath=$([System.IO.Path]::GetFullPath('$(OutputPath)'))">
+    </MSBuild>
+    <Message Text="Copying files to output dir..." Importance="high" />
+    <Copy SourceFiles="@(Content)" DestinationFiles="@(Content->'$(OutputPath)%(RelativeDir)%(Filename)%(Extension)')" />
+    <Message Text="Finished Build JSProject '$(MSBuildProjectFile)'." Importance="high">
+    </Message>
+  </Target>
+  <Target Name="CreateManifestResourceNames" Condition="'@(ResxWithNoCulture)@(ResxWithCulture)@(NonResxWithNoCulture)@(NonResxWithCulture)'!=''" />
+  <Target Name="Rebuild" DependsOnTargets="Clean;Build">
+  </Target>
+  <Target Name="Clean">
+    <!--
+    <Message Text="Cleaning Output files..." Importance="high" />
+    <Delete Files="@([System.IO.Path]::GetFullPath('$(OutputPath)'))" />
+    -->
+    <Message Text="Cleaning Output dir ($([System.IO.Path]::GetFullPath('$(OutputPath)')))..." Importance="high" />
+    <RemoveDir Directories="$([System.IO.Path]::GetFullPath('$(OutputPath)'))" />
+  </Target>
+</Project>

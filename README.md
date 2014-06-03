@@ -1,0 +1,1 @@
+﻿Source code for the [Tip Calculator on AngularJS tutorial](http://js.devexpress.com/Documentation/Howto/Demos_Inside/Tip_Calculator_on_AngularJS_Demo?version=14_1)
